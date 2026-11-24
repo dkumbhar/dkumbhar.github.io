@@ -3,95 +3,246 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Deepak Kumbhar · Agentic AI and system design</title>
-<meta name="description" content="Articles by Deepak Kumbhar on designing agentic AI systems that hold up in production.">
+<title>Deepak Kumbhar | Enterprise AI, Agentic Systems &amp; Architecture</title>
+<meta name="description" content="Practical perspectives from Deepak Kumbhar on enterprise AI, agentic systems, architecture, modernization, and technology transformation.">
 <meta name="author" content="Deepak Kumbhar">
 <link rel="canonical" href="https://dkumbhar.github.io/">
 <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+<link rel="alternate" type="application/rss+xml" title="Deepak Kumbhar" href="/feed.xml">
+<meta name="theme-color" content="#F7F7F3" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#121417" media="(prefers-color-scheme: dark)">
 <meta property="og:type" content="website">
-<meta property="og:title" content="Deepak Kumbhar">
-<meta property="og:description" content="Articles on designing agentic AI systems that hold up in production.">
+<meta property="og:site_name" content="Deepak Kumbhar">
+<meta property="og:title" content="Deepak Kumbhar | Enterprise AI, Agentic Systems &amp; Architecture">
+<meta property="og:description" content="Practical perspectives on enterprise AI, agentic systems, architecture, modernization, and technology transformation.">
 <meta property="og:url" content="https://dkumbhar.github.io/">
 <meta property="og:image" content="https://dkumbhar.github.io/assets/og-agent-is-the-easy-part.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="The agent is the easy part. The system around it is the job.">
 <meta name="twitter:card" content="summary_large_image">
-<style>
-:root{
-  --paper:#f7f4ee; --paper2:#efeae0; --ink:#1d2327; --ink2:#4a545b; --mute:#7b858c;
-  --line:#d9d2c4; --teal:#0f6e6e; --orange:#d9622b;
-  --serif:"Iowan Old Style","Charter","Palatino Linotype","Book Antiqua",Georgia,serif;
-  --sans:-apple-system,BlinkMacSystemFont,"Segoe UI","Helvetica Neue",Arial,sans-serif;
-  --mono:ui-monospace,"SF Mono",Menlo,Consolas,monospace;
-}
-*{box-sizing:border-box}
-body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--serif);font-size:18px;line-height:1.65;-webkit-font-smoothing:antialiased}
-a{color:var(--teal);text-underline-offset:3px}
-.wrap{max-width:820px;margin:0 auto;padding:0 22px}
-.sitebar{background:var(--ink);font-family:var(--sans);font-size:14px}
-.sitebar .wrap{display:flex;justify-content:space-between;align-items:center;padding-top:12px;padding-bottom:12px}
-.sitebar a{color:#f3efe6;text-decoration:none}
-.sitebar .name{font-weight:800}
-.sitebar nav a{margin-left:18px;color:#c9c3b7}
-.sitebar nav a:hover,.sitebar .name:hover{color:#f0a37a}
-header{border-bottom:1px solid var(--line);background:
-  radial-gradient(circle at 85% 20%,rgba(217,98,43,.10),transparent 40%),
-  radial-gradient(circle at 10% 90%,rgba(15,110,110,.10),transparent 45%),var(--paper)}
-header .wrap{padding-top:72px;padding-bottom:56px}
-.kicker{font-family:var(--mono);font-size:12.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--orange)}
-h1{font-family:var(--sans);font-size:clamp(36px,6vw,56px);line-height:1.05;letter-spacing:-.025em;margin:14px 0 16px;font-weight:800}
-.dek{font-size:21px;color:var(--ink2);max-width:620px;margin:0}
-h2{font-family:var(--sans);font-size:13px;letter-spacing:.14em;text-transform:uppercase;color:var(--mute);margin:56px 0 18px;font-weight:700}
-.card{display:grid;grid-template-columns:300px 1fr;gap:24px;background:#fff;border:1px solid var(--line);border-radius:16px;overflow:hidden;text-decoration:none;color:inherit;transition:transform .15s,box-shadow .15s}
-.card:hover{transform:translateY(-2px);box-shadow:0 10px 28px rgba(29,35,39,.10)}
-.card img{width:100%;height:100%;object-fit:cover;display:block;background:#1f2427}
-.card .body{padding:22px 24px 22px 0}
-.card h3{font-family:var(--sans);font-size:23px;line-height:1.2;letter-spacing:-.01em;margin:6px 0 8px}
-.card p{margin:0 0 12px;color:var(--ink2);font-size:16.5px;line-height:1.55}
-.meta{font-family:var(--sans);font-size:13px;color:var(--mute)}
-.tag{display:inline-block;font-family:var(--mono);font-size:11px;padding:2px 8px;border-radius:20px;background:var(--paper2);color:var(--ink2);margin-right:6px}
-.about{background:#fff;border:1px solid var(--line);border-radius:16px;padding:24px 26px}
-.about p{margin:0 0 12px}
-.about p:last-child{margin:0}
-footer{border-top:1px solid var(--line);margin-top:72px;padding:26px 0 56px;font-family:var(--sans);font-size:13.5px;color:var(--mute)}
-@media(max-width:700px){.card{grid-template-columns:1fr}.card .body{padding:0 20px 20px}.card img{height:auto}}
-</style>
+<meta name="twitter:title" content="Deepak Kumbhar | Enterprise AI, Agentic Systems &amp; Architecture">
+<meta name="twitter:description" content="Practical perspectives on enterprise AI, agentic systems, architecture, modernization, and technology transformation.">
+<meta name="twitter:image" content="https://dkumbhar.github.io/assets/og-agent-is-the-easy-part.png">
+<link rel="preload" as="image" href="/assets/cover-agent-is-the-easy-part.webp" type="image/webp">
+<link rel="stylesheet" href="/assets/site.css">
+<!-- build:jsonld -->
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Person","@id":"https://dkumbhar.github.io/#person","name":"Deepak Kumbhar","url":"https://dkumbhar.github.io/","jobTitle":"Associate Partner","description":"Enterprise architect and Hyperscaler AI Leader writing about enterprise AI, agentic systems, architecture and technology transformation.","knowsAbout":["Enterprise AI","Agentic AI","Enterprise architecture","Application modernization","Cloud platforms","AI governance","Technology transformation"],"sameAs":["https://www.linkedin.com/in/deepakkumbhar","https://github.com/dkumbhar"]},{"@type":"WebSite","@id":"https://dkumbhar.github.io/#website","name":"Deepak Kumbhar","url":"https://dkumbhar.github.io/","description":"Practical perspectives on building AI-enabled enterprises.","inLanguage":"en-US","publisher":{"@id":"https://dkumbhar.github.io/#person"}},{"@type":"Blog","@id":"https://dkumbhar.github.io/#blog","name":"Deepak Kumbhar","url":"https://dkumbhar.github.io/","description":"Practical perspectives on building AI-enabled enterprises.","author":{"@id":"https://dkumbhar.github.io/#person"},"blogPost":[{"@type":"BlogPosting","headline":"The agent is the easy part: a field guide to agentic AI system design","url":"https://dkumbhar.github.io/articles/agent-is-the-easy-part/","datePublished":"2026-11-24","description":"An engineer's guide to taking LLM agents from demo to production: routing, tool contracts, memory, durable orchestration, approval gates, security, evals and observability.","author":{"@id":"https://dkumbhar.github.io/#person"}}]}]}</script>
+<!-- /build:jsonld -->
 </head>
-<body>
-
-<div class="sitebar"><div class="wrap"><a class="name" href="/">Deepak Kumbhar</a><nav><a href="#articles">Articles</a><a href="#about">About</a><a href="https://www.linkedin.com/in/deepakkumbhar">LinkedIn</a></nav></div></div>
-
-<header>
-  <div class="wrap">
-    <div class="kicker">Agentic AI · System design</div>
-    <h1>Deepak Kumbhar</h1>
-    <p class="dek">I write about the engineering around AI agents: the routing, contracts, state, security and evaluation that decide whether an agent works for real users.</p>
+<body class="dk">
+<a class="dk-skip" href="#main">Skip to content</a>
+<header class="dk-nav">
+  <div class="dk-nav-inner">
+    <a class="dk-brand" href="/">Deepak Kumbhar</a>
+    <nav aria-label="Main">
+      <ul>
+        <li><a href="/writing/">Writing</a></li>
+        <li><a href="/topics/">Topics</a></li>
+        <li><a href="/#about">About</a></li>
+        <li class="dk-push"><a class="dk-icon-link" href="https://www.linkedin.com/in/deepakkumbhar" aria-label="Deepak Kumbhar on LinkedIn"><svg class="dk-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.35V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.06 2.06 0 1 1 0-4.13 2.06 2.06 0 0 1 0 4.13zM7.12 20.45H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.73v20.54C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.73V1.73C24 .77 23.2 0 22.22 0z"/></svg></a></li>
+        <li><a class="dk-icon-link" href="https://github.com/dkumbhar" aria-label="Deepak Kumbhar on GitHub"><svg class="dk-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12 .3a12 12 0 0 0-3.8 23.38c.6.12.83-.26.83-.57L9 21.07c-3.34.72-4.04-1.61-4.04-1.61-.55-1.39-1.34-1.76-1.34-1.76-1.08-.74.09-.73.09-.73 1.2.09 1.83 1.24 1.83 1.24 1.07 1.83 2.81 1.3 3.5 1 .1-.78.42-1.31.76-1.61-2.67-.3-5.47-1.33-5.47-5.93 0-1.31.47-2.38 1.24-3.22-.14-.3-.54-1.52.1-3.18 0 0 1-.32 3.3 1.23a11.5 11.5 0 0 1 6 0c2.28-1.55 3.29-1.23 3.29-1.23.64 1.66.24 2.88.12 3.18a4.65 4.65 0 0 1 1.23 3.22c0 4.61-2.8 5.63-5.48 5.92.42.36.81 1.1.81 2.22l-.01 3.29c0 .31.2.69.82.57A12 12 0 0 0 12 .3"/></svg></a></li>
+      </ul>
+    </nav>
   </div>
 </header>
 
-<main class="wrap">
+<main id="main">
 
-<h2 id="articles">Articles</h2>
+  <section class="dk-hero" aria-labelledby="hero-h">
+    <div class="dk-wrap">
+      <h1 id="hero-h">
+        <span class="dk-hero-name">Deepak Kumbhar</span>
+        <span class="dk-hero-tag"><span>Enterprise AI.</span> <span>Architecture.</span> <span>Transformation.</span></span>
+      </h1>
+      <p class="dk-hero-role">Associate Partner, enterprise architect and Hyperscaler AI Leader. Practical perspectives on building AI-enabled enterprises.</p>
+      <p class="dk-hero-lede">I write about what it takes to move AI from compelling demonstrations to dependable enterprise systems: architecture, agents, context, platforms, governance, modernization, and the operating models behind real adoption.</p>
+      <p class="dk-hero-goal">The goal is not to predict the future of AI. It is to understand how we build it.</p>
+      <div class="dk-actions">
+        <a class="dk-btn dk-btn-primary" href="#featured">Explore articles</a>
+        <a class="dk-btn dk-btn-quiet" href="#about">About Deepak</a>
+        <span class="dk-social">
+          <a href="https://www.linkedin.com/in/deepakkumbhar" aria-label="Deepak Kumbhar on LinkedIn"><svg class="dk-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.35V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.06 2.06 0 1 1 0-4.13 2.06 2.06 0 0 1 0 4.13zM7.12 20.45H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.73v20.54C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.73V1.73C24 .77 23.2 0 22.22 0z"/></svg></a>
+          <a href="https://github.com/dkumbhar" aria-label="Deepak Kumbhar on GitHub"><svg class="dk-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12 .3a12 12 0 0 0-3.8 23.38c.6.12.83-.26.83-.57L9 21.07c-3.34.72-4.04-1.61-4.04-1.61-.55-1.39-1.34-1.76-1.34-1.76-1.08-.74.09-.73.09-.73 1.2.09 1.83 1.24 1.83 1.24 1.07 1.83 2.81 1.3 3.5 1 .1-.78.42-1.31.76-1.61-2.67-.3-5.47-1.33-5.47-5.93 0-1.31.47-2.38 1.24-3.22-.14-.3-.54-1.52.1-3.18 0 0 1-.32 3.3 1.23a11.5 11.5 0 0 1 6 0c2.28-1.55 3.29-1.23 3.29-1.23.64 1.66.24 2.88.12 3.18a4.65 4.65 0 0 1 1.23 3.22c0 4.61-2.8 5.63-5.48 5.92.42.36.81 1.1.81 2.22l-.01 3.29c0 .31.2.69.82.57A12 12 0 0 0 12 .3"/></svg></a>
+        </span>
+      </div>
+    </div>
+  </section>
 
-<!-- To add an article: copy this <a class="card"> block, put it above this one, and change the link, image, title, summary and date. -->
-<a class="card" href="/articles/agent-is-the-easy-part/">
-  <img src="/assets/cover-agent-is-the-easy-part.png" alt="The agent is the easy part. The system around it is the job.">
-  <div class="body">
-    <div class="meta">November 24, 2026 · 35 min read · Interactive</div>
-    <h3>The agent is the easy part: a field guide to agentic AI system design</h3>
-    <p>How to take LLM agents from a demo that impresses a room to software that thousands of strangers can rely on. Covers routing, tool contracts, memory, durable orchestration, approval gates, security, evals and observability, with eleven diagrams, a reliability calculator and a design-review checklist.</p>
-    <span class="tag">agents</span><span class="tag">architecture</span><span class="tag">evals</span><span class="tag">security</span>
+  <section class="dk-section" id="about" aria-labelledby="about-h">
+    <div class="dk-wrap dk-split">
+      <h2 class="dk-h2" id="about-h">About</h2>
+      <div class="dk-prose">
+        <p>I'm Deepak Kumbhar, an Associate Partner and Hyperscaler AI Leader focused on enterprise AI, architecture, and technology transformation. Over more than 25 years, I've worked across enterprise and solution architecture, application modernization, integration, cloud, data, and increasingly AI.</p>
+        <p>Today, much of my work centers on a deceptively difficult question:</p>
+        <p class="dk-question">How do enterprises move AI from experimentation into production?</p>
+        <p>Answering it means looking beyond models, to architecture, context, agents, data, integration, governance, security, operating models, human adoption, and the realities of existing enterprise technology estates.</p>
+        <p>This site is where I explore those questions and share practical perspectives from that journey.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="dk-section" id="featured" aria-labelledby="featured-h">
+    <div class="dk-wrap">
+      <div class="dk-featured-head"><h2 class="dk-h2" id="featured-h">Featured writing</h2></div>
+<!-- build:featured -->
+<article class="dk-lead" aria-labelledby="lead-title">
+  <a class="dk-lead-media" href="/articles/agent-is-the-easy-part/" tabindex="-1" aria-hidden="true"><img src="/assets/cover-agent-is-the-easy-part.webp" width="1280" height="720" alt="" fetchpriority="high" decoding="async"></a>
+  <div class="dk-lead-body">
+    <p class="dk-cat"><a href="/topics/#agentic-ai">Agentic AI</a></p>
+    <h3 class="dk-lead-title" id="lead-title"><a class="dk-title-link" href="/articles/agent-is-the-easy-part/">The agent is the easy part: a field guide to agentic AI system design</a></h3>
+    <p class="dk-excerpt">An engineer&#x27;s guide to taking LLM agents from demo to production: routing, tool contracts, memory, durable orchestration, approval gates, security, evals and observability.</p>
+    <p class="dk-meta"><time datetime="2026-11-24">November 24, 2026</time><span>25 min read</span></p>
+    <a class="dk-more" href="/articles/agent-is-the-easy-part/">Read the field guide<span class="dk-sr">: The agent is the easy part: a field guide to agentic AI system design</span></a>
   </div>
-</a>
-
-<h2 id="about">About</h2>
-
-<div class="about">
-  <p>I'm Deepak Kumbhar. I work on designing and pricing AI and cloud solutions, and I write here about what it takes to run agentic systems in production.</p>
-  <p>You can find me on <a href="https://www.linkedin.com/in/deepakkumbhar">LinkedIn</a>, where I post shorter versions of these articles.</p>
+</article>
+<div class="dk-inside">
+  <h3 class="dk-inside-h">Start with a section</h3>
+  <p class="dk-inside-note">Each section of the field guide stands on its own.</p>
+  <ul class="dk-chapters">
+    <li>
+      <p class="dk-cat"><a href="/topics/#agentic-ai">Agentic AI</a></p>
+      <h4 class="dk-ch-title"><a class="dk-title-link" href="/articles/agent-is-the-easy-part/#s2">Workflow or agent? Choosing your autonomy</a></h4>
+      <p class="dk-ch-excerpt">Anthropic&#x27;s essay Building Effective Agents draws a useful line. In workflows, LLMs and tools are orchestrated through predefined code paths. In agents, the LLM itself directs the process…</p>
+      <p class="dk-meta"><span>Section 2</span><span>1 min read</span></p>
+      <a class="dk-more" href="/articles/agent-is-the-easy-part/#s2">Read section<span class="dk-sr">: Workflow or agent? Choosing your autonomy</span></a>
+    </li>
+    <li>
+      <p class="dk-cat"><a href="/topics/#context-engineering">Context engineering</a></p>
+      <h4 class="dk-ch-title"><a class="dk-title-link" href="/articles/agent-is-the-easy-part/#s6">Memory, state and context</a></h4>
+      <p class="dk-ch-excerpt">This is where most agent codebases turn to mush, because &quot;memory&quot; gets used for four different things. Separate them early.</p>
+      <p class="dk-meta"><span>Section 6</span><span>2 min read</span></p>
+      <a class="dk-more" href="/articles/agent-is-the-easy-part/#s6">Read section<span class="dk-sr">: Memory, state and context</span></a>
+    </li>
+    <li>
+      <p class="dk-cat"><a href="/topics/#security-governance">Security and governance</a></p>
+      <h4 class="dk-ch-title"><a class="dk-title-link" href="/articles/agent-is-the-easy-part/#s10">Security: assume every token is hostile</a></h4>
+      <p class="dk-ch-excerpt">LLMs receive instructions and data in the same channel. There&#x27;s no hardware boundary between &quot;system prompt&quot; and &quot;the web page we just fetched&quot;. So treat everything that reaches the model…</p>
+      <p class="dk-meta"><span>Section 10</span><span>2 min read</span></p>
+      <a class="dk-more" href="/articles/agent-is-the-easy-part/#s10">Read section<span class="dk-sr">: Security: assume every token is hostile</span></a>
+    </li>
+    <li>
+      <p class="dk-cat"><a href="/topics/#evaluation-observability">Evaluation and observability</a></p>
+      <h4 class="dk-ch-title"><a class="dk-title-link" href="/articles/agent-is-the-easy-part/#s11">Evaluation that sees the whole trace</a></h4>
+      <p class="dk-ch-excerpt">In traditional software, &quot;no exception thrown&quot; is a decent proxy for &quot;worked&quot;. In agentic systems that proxy fails constantly. The model can return valid JSON that means the wrong thing…</p>
+      <p class="dk-meta"><span>Section 11</span><span>2 min read</span></p>
+      <a class="dk-more" href="/articles/agent-is-the-easy-part/#s11">Read section<span class="dk-sr">: Evaluation that sees the whole trace</span></a>
+    </li>
+  </ul>
 </div>
+<!-- /build:featured -->
+    </div>
+  </section>
+
+  <section class="dk-section" id="latest" aria-labelledby="latest-h">
+    <div class="dk-wrap">
+      <h2 class="dk-h2" id="latest-h">Latest writing</h2>
+      <span id="articles"></span>
+<!-- build:latest -->
+<ul class="dk-list">
+  <li class="dk-row">
+    <p class="dk-row-date"><time datetime="2026-11-24">November 24, 2026</time></p>
+    <div>
+      <h3 class="dk-row-title"><a class="dk-title-link" href="/articles/agent-is-the-easy-part/">The agent is the easy part: a field guide to agentic AI system design</a></h3>
+      <p class="dk-row-excerpt">An engineer&#x27;s guide to taking LLM agents from demo to production: routing, tool contracts, memory, durable orchestration, approval gates, security, evals and observability.</p>
+    </div>
+    <p class="dk-row-side"><a href="/topics/#agentic-ai">Agentic AI</a><span>25 min read</span><a class="dk-more" href="/articles/agent-is-the-easy-part/">Read<span class="dk-sr">: The agent is the easy part: a field guide to agentic AI system design</span></a></p>
+  </li>
+</ul>
+<p class="dk-viewall"><a class="dk-more" href="/writing/">Browse the writing index</a></p>
+<!-- /build:latest -->
+    </div>
+  </section>
+
+  <section class="dk-section" id="topics" aria-labelledby="topics-h">
+    <div class="dk-wrap">
+      <h2 class="dk-h2" id="topics-h">Explore by topic</h2>
+<!-- build:topics -->
+<ul class="dk-topics">
+  <li><a href="/topics/#agentic-ai">Agentic AI <span class="dk-count">4 sections</span></a></li>
+  <li><a href="/topics/#ai-architecture">AI architecture <span class="dk-count">4 sections</span></a></li>
+  <li><a href="/topics/#context-engineering">Context engineering <span class="dk-count">1 section</span></a></li>
+  <li><a href="/topics/#security-governance">Security and governance <span class="dk-count">3 sections</span></a></li>
+  <li><a href="/topics/#evaluation-observability">Evaluation and observability <span class="dk-count">3 sections</span></a></li>
+</ul>
+<p class="dk-topics-note">Topics are drawn from the sections of the published field guide. New articles are added to the topics they cover.</p>
+<!-- /build:topics -->
+    </div>
+  </section>
+
+  <section class="dk-section" id="exploring" aria-labelledby="exploring-h">
+    <div class="dk-wrap dk-split">
+      <h2 class="dk-h2" id="exploring-h">What I'm exploring</h2>
+      <div class="dk-prose">
+        <p class="dk-pov-open">AI is making software easier to create. That does not necessarily make enterprise systems easier to build.</p>
+        <p>As models become more capable, some of the hardest problems are moving elsewhere: context, orchestration, integration, evaluation, governance, security, operating models, and deciding where humans belong in the loop.</p>
+        <p>Those are the questions I am interested in. I write about the architectural and organizational choices that determine whether AI remains an impressive prototype or becomes a dependable enterprise capability.</p>
+        <p><a class="dk-more" href="#latest">Read the latest thinking</a></p>
+      </div>
+    </div>
+  </section>
+
+  <section class="dk-section" id="focus" aria-labelledby="focus-h">
+    <div class="dk-wrap">
+      <h2 class="dk-h2" id="focus-h">Areas of focus</h2>
+      <ul class="dk-focus">
+        <li>
+          <h3>Agentic AI</h3>
+          <p>How agents, tools, context, memory, orchestration, and evaluation come together in enterprise systems.</p>
+        </li>
+        <li>
+          <h3>Enterprise AI adoption</h3>
+          <p>The architecture, governance, operating models, and organizational changes required to scale AI beyond pilots.</p>
+        </li>
+        <li>
+          <h3>Architecture and modernization</h3>
+          <p>How cloud, data, integration, platforms, and modernization shape the foundation on which AI systems depend.</p>
+        </li>
+        <li>
+          <h3>AI leadership and transformation</h3>
+          <p>Practical perspectives on moving organizations from AI experimentation toward sustainable capability and measurable outcomes.</p>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="dk-section" id="notebook" aria-labelledby="notebook-h">
+    <div class="dk-wrap dk-split">
+      <h2 class="dk-h2" id="notebook-h">From the notebook</h2>
+      <div class="dk-prose dk-notebook-text">
+        <p class="dk-notebook-big"><span>Technology changes quickly.</span> <span>Enterprise reality does not.</span> <span>The interesting work happens where the two meet.</span></p>
+        <p>I use this site to think in public about AI, architecture, transformation, and the lessons that emerge when new technology meets existing enterprises.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="dk-section" id="connect" aria-labelledby="connect-h">
+    <div class="dk-wrap dk-split">
+      <h2 class="dk-h2" id="connect-h">Let's connect</h2>
+      <div class="dk-prose">
+        <p>If you are working through similar questions around enterprise AI, agentic systems, architecture, or large-scale transformation, I'd be glad to connect.</p>
+        <ul class="dk-connect-links">
+          <li><a href="https://www.linkedin.com/in/deepakkumbhar"><svg class="dk-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.35V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.06 2.06 0 1 1 0-4.13 2.06 2.06 0 0 1 0 4.13zM7.12 20.45H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.73v20.54C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.73V1.73C24 .77 23.2 0 22.22 0z"/></svg>Connect on LinkedIn</a></li>
+          <li><a href="https://github.com/dkumbhar"><svg class="dk-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12 .3a12 12 0 0 0-3.8 23.38c.6.12.83-.26.83-.57L9 21.07c-3.34.72-4.04-1.61-4.04-1.61-.55-1.39-1.34-1.76-1.34-1.76-1.08-.74.09-.73.09-.73 1.2.09 1.83 1.24 1.83 1.24 1.07 1.83 2.81 1.3 3.5 1 .1-.78.42-1.31.76-1.61-2.67-.3-5.47-1.33-5.47-5.93 0-1.31.47-2.38 1.24-3.22-.14-.3-.54-1.52.1-3.18 0 0 1-.32 3.3 1.23a11.5 11.5 0 0 1 6 0c2.28-1.55 3.29-1.23 3.29-1.23.64 1.66.24 2.88.12 3.18a4.65 4.65 0 0 1 1.23 3.22c0 4.61-2.8 5.63-5.48 5.92.42.36.81 1.1.81 2.22l-.01 3.29c0 .31.2.69.82.57A12 12 0 0 0 12 .3"/></svg>Follow on GitHub</a></li>
+        </ul>
+      </div>
+    </div>
+  </section>
 
 </main>
 
-<footer><div class="wrap">© 2026 Deepak Kumbhar. Views are my own.</div></footer>
-
+<footer class="dk-footer">
+  <div class="dk-footer-inner">
+    <p><strong>Deepak Kumbhar.</strong> Practical perspectives on building AI-enabled enterprises. This is a personal publication; views are my own and do not represent my employer.</p>
+    <ul>
+      <li><a href="/writing/">Writing</a></li>
+      <li><a href="/topics/">Topics</a></li>
+      <li><a href="/feed.xml">RSS</a></li>
+      <li><a href="https://www.linkedin.com/in/deepakkumbhar">LinkedIn</a></li>
+      <li><a href="https://github.com/dkumbhar">GitHub</a></li>
+    </ul>
+    <p>&copy; 2026 Deepak Kumbhar</p>
+  </div>
+</footer>
 </body>
 </html>

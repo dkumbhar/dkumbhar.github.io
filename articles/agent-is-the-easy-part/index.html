@@ -1,12 +1,12 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="light">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>The Agent Is the Easy Part: A Field Guide to Agentic AI System Design</title>
 <style>
 :root{
-  --paper:#f7f4ee; --paper2:#efeae0; --ink:#1d2327; --ink2:#4a545b; --mute:#7b858c;
+  --paper:#f7f4ee; --paper2:#efeae0; --ink:#1d2327; --ink2:#4a545b; --mute:#5b666d;
   --line:#d9d2c4; --teal:#0f6e6e; --teal2:#d6ebe8; --orange:#d9622b; --orange2:#fbe3d6;
   --plum:#6b3fa0; --plum2:#ebe2f5; --gold:#b98a12; --gold2:#f6ecc9; --red:#b3302a; --red2:#f6dcd9;
   --code:#1f2a30; --codefg:#e6e1d6;
@@ -19,17 +19,17 @@ html{scroll-behavior:smooth}
 body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--serif);font-size:18.5px;line-height:1.68;-webkit-font-smoothing:antialiased}
 a{color:var(--teal);text-decoration-thickness:1px;text-underline-offset:3px}
 .wrap{max-width:780px;margin:0 auto;padding:0 22px}
-header.hero{border-bottom:1px solid var(--line);background:
+.hero{display:block;border-bottom:1px solid var(--line);background:
   radial-gradient(circle at 85% 20%, rgba(217,98,43,.10), transparent 40%),
   radial-gradient(circle at 10% 90%, rgba(15,110,110,.10), transparent 45%), var(--paper)}
 .hero .wrap{padding-top:64px;padding-bottom:48px}
-.kicker{font-family:var(--mono);font-size:12.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--orange)}
+.kicker{font-family:var(--mono);font-size:12.5px;letter-spacing:.14em;text-transform:uppercase;color:#a9491b}
 h1{font-family:var(--sans);font-size:clamp(34px,6vw,54px);line-height:1.05;letter-spacing:-.025em;margin:14px 0 18px;font-weight:800}
 h1 em{font-style:normal;color:var(--teal)}
 .dek{font-size:21px;color:var(--ink2);margin:0 0 26px;max-width:640px}
 .byline{font-family:var(--sans);font-size:13.5px;color:var(--mute)}
 h2{font-family:var(--sans);font-size:30px;letter-spacing:-.018em;line-height:1.15;margin:76px 0 8px;font-weight:800}
-h2 .num{font-family:var(--mono);font-size:14px;color:var(--orange);display:block;letter-spacing:.1em;margin-bottom:6px;font-weight:600}
+h2 .num{font-family:var(--mono);font-size:14px;color:#a9491b;display:block;letter-spacing:.1em;margin-bottom:6px;font-weight:600}
 h3{font-family:var(--sans);font-size:20px;margin:40px 0 4px;letter-spacing:-.01em}
 p{margin:0 0 18px}
 .lede::first-letter{float:left;font-family:var(--sans);font-weight:800;font-size:64px;line-height:.9;padding:6px 10px 0 0;color:var(--teal)}
@@ -49,13 +49,16 @@ figcaption b{color:var(--ink)}
 .pull{font-family:var(--sans);font-size:25px;line-height:1.3;font-weight:700;letter-spacing:-.01em;color:var(--teal);border-top:2px solid var(--ink);border-bottom:1px solid var(--line);padding:18px 0;margin:36px 0}
 .stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:12px;margin:28px 0}
 .stat{background:#fff;border:1px solid var(--line);border-radius:12px;padding:14px 16px}
-.stat .v{font-family:var(--sans);font-weight:800;font-size:30px;letter-spacing:-.02em;color:var(--orange);line-height:1.1}
+.stat .v{font-family:var(--sans);font-weight:800;font-size:30px;letter-spacing:-.02em;color:#a9491b;line-height:1.1}
 .stat .l{font-family:var(--sans);font-size:13px;color:var(--ink2);line-height:1.4;margin-top:4px}
 table{width:100%;border-collapse:collapse;font-family:var(--sans);font-size:14.5px;margin:22px 0 28px;background:#fff;border:1px solid var(--line);border-radius:12px;overflow:hidden}
 th,td{text-align:left;padding:10px 12px;border-bottom:1px solid var(--line);vertical-align:top;line-height:1.45}
 th{background:var(--paper2);font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:var(--ink2)}
 tr:last-child td{border-bottom:none}
 td code{font-size:12.5px}
+p code,li code{overflow-wrap:anywhere}
+@media (max-width:640px){table{display:block;overflow-x:auto;-webkit-overflow-scrolling:touch}}
+th[scope="row"]{text-transform:none;letter-spacing:0;font-size:14.5px;color:var(--ink);background:#fff;font-weight:700}
 .tag{display:inline-block;font-family:var(--mono);font-size:11px;padding:1px 7px;border-radius:20px;background:var(--paper2);color:var(--ink2);white-space:nowrap}
 nav.toc{background:#fff;border:1px solid var(--line);border-radius:14px;padding:20px 24px;margin:40px 0 10px;font-family:var(--sans);font-size:15px}
 nav.toc .t{font-weight:800;font-size:12.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--mute);margin-bottom:8px}
@@ -65,7 +68,7 @@ nav.toc a{text-decoration:none;color:var(--ink)}
 nav.toc a:hover{color:var(--teal)}
 /* calculator */
 .calc{background:var(--ink);color:#f3efe6;border-radius:16px;padding:22px 22px 18px;margin:30px -10px;font-family:var(--sans)}
-.calc h4{margin:0 0 4px;font-size:13px;letter-spacing:.12em;text-transform:uppercase;color:#f0a37a}
+.calc h3{margin:0 0 4px;font-size:13px;letter-spacing:.12em;text-transform:uppercase;color:#f0a37a}
 .calc p{font-size:14.5px;color:#c9c3b7;margin:0 0 14px;font-family:var(--sans)}
 .calc .row{display:grid;grid-template-columns:150px 1fr 64px;gap:12px;align-items:center;margin:8px 0;font-size:14px}
 .calc input[type=range]{width:100%;accent-color:#f0a37a}
@@ -77,7 +80,7 @@ nav.toc a:hover{color:var(--teal)}
 .calc svg{width:100%;height:120px;margin-top:12px;display:block}
 /* checklist */
 .check{background:#fff;border:1px solid var(--line);border-radius:14px;padding:6px 20px 18px;font-family:var(--sans);font-size:15px;margin:24px 0}
-.check h4{font-size:12.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--orange);margin:18px 0 6px}
+.check h3{font-size:12.5px;letter-spacing:.1em;text-transform:uppercase;color:#a9491b;margin:18px 0 6px}
 .check label{display:flex;gap:10px;align-items:flex-start;padding:5px 0;cursor:pointer;line-height:1.45}
 .check input{margin-top:4px;accent-color:var(--teal);width:16px;height:16px;flex:none}
 .progress{position:sticky;top:0;background:#fff;padding:14px 0 10px;border-bottom:1px solid var(--line);z-index:2}
@@ -96,7 +99,13 @@ footer{border-top:1px solid var(--line);margin-top:70px;padding:30px 0 60px;font
 <meta name="author" content="Deepak Kumbhar">
 <link rel="canonical" href="https://dkumbhar.github.io/articles/agent-is-the-easy-part/">
 <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+<link rel="alternate" type="application/rss+xml" title="Deepak Kumbhar" href="/feed.xml">
+<meta name="theme-color" content="#f7f4ee">
+<link rel="stylesheet" href="/assets/site.css">
 <meta property="og:type" content="article">
+<meta property="og:site_name" content="Deepak Kumbhar">
+<meta property="article:published_time" content="2026-11-24">
+<meta property="article:section" content="Agentic AI">
 <meta property="og:title" content="The agent is the easy part">
 <meta property="og:description" content="An engineer's guide to taking LLM agents from demo to production: routing, tool contracts, memory, durable orchestration, approval gates, security, evals and observability.">
 <meta property="og:url" content="https://dkumbhar.github.io/articles/agent-is-the-easy-part/">
@@ -109,29 +118,38 @@ footer{border-top:1px solid var(--line);margin-top:70px;padding:30px 0 60px;font
 <meta name="twitter:image" content="https://dkumbhar.github.io/assets/og-agent-is-the-easy-part.png">
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"TechArticle","headline":"The Agent Is the Easy Part: A Field Guide to Agentic AI System Design","author":{"@type":"Person","name":"Deepak Kumbhar","url":"https://dkumbhar.github.io/"},"datePublished":"2026-11-24","image":"https://dkumbhar.github.io/assets/og-agent-is-the-easy-part.png","url":"https://dkumbhar.github.io/articles/agent-is-the-easy-part/"}</script>
 <style>
-.sitebar{background:var(--ink);font-family:var(--sans);font-size:14px}
-.sitebar .wrap{display:flex;justify-content:space-between;align-items:center;padding-top:12px;padding-bottom:12px}
-.sitebar a{color:#f3efe6;text-decoration:none}
-.sitebar .name{font-weight:800;letter-spacing:-.01em}
-.sitebar nav a{margin-left:18px;color:#c9c3b7}
-.sitebar nav a:hover,.sitebar .name:hover{color:#f0a37a}
 .byline .who{color:var(--ink);font-weight:700}
 footer .home{display:block;margin-top:10px}
+.dk-nav{position:relative;z-index:3}
 </style>
 </head>
 <body>
-<div class="sitebar"><div class="wrap"><a class="name" href="/">Deepak Kumbhar</a><nav><a href="/#articles">Articles</a><a href="/#about">About</a><a href="https://www.linkedin.com/in/deepakkumbhar">LinkedIn</a></nav></div></div>
-
-<header class="hero">
-  <div class="wrap">
-    <div class="kicker">Field guide · Agentic AI system design</div>
-    <h1>The agent is the easy part. <em>The system around it is the job.</em></h1>
-    <p class="dek">An engineer's guide to taking LLM agents from a demo that impresses a room to software that thousands of strangers can rely on: routing, tool contracts, memory, durable orchestration, evals, security and the operating discipline that ties them together.</p>
-    <div class="byline"><span class="who">By Deepak Kumbhar</span> · November 24, 2026 · About 35 minutes to read · Builds on a talk by Aishwarya Srinivasan, with additional research from Anthropic, Sierra, OWASP, DeepMind, Temporal, OpenTelemetry and others</div>
+<a class="dk-skip" href="#main">Skip to content</a>
+<header class="dk-nav">
+  <div class="dk-nav-inner">
+    <a class="dk-brand" href="/">Deepak Kumbhar</a>
+    <nav aria-label="Main">
+      <ul>
+        <li><a href="/writing/">Writing</a></li>
+        <li><a href="/topics/">Topics</a></li>
+        <li><a href="/#about">About</a></li>
+        <li class="dk-push"><a class="dk-icon-link" href="https://www.linkedin.com/in/deepakkumbhar" aria-label="Deepak Kumbhar on LinkedIn"><svg class="dk-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.35V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.06 2.06 0 1 1 0-4.13 2.06 2.06 0 0 1 0 4.13zM7.12 20.45H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.73v20.54C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.73V1.73C24 .77 23.2 0 22.22 0z"/></svg></a></li>
+        <li><a class="dk-icon-link" href="https://github.com/dkumbhar" aria-label="Deepak Kumbhar on GitHub"><svg class="dk-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12 .3a12 12 0 0 0-3.8 23.38c.6.12.83-.26.83-.57L9 21.07c-3.34.72-4.04-1.61-4.04-1.61-.55-1.39-1.34-1.76-1.34-1.76-1.08-.74.09-.73.09-.73 1.2.09 1.83 1.24 1.83 1.24 1.07 1.83 2.81 1.3 3.5 1 .1-.78.42-1.31.76-1.61-2.67-.3-5.47-1.33-5.47-5.93 0-1.31.47-2.38 1.24-3.22-.14-.3-.54-1.52.1-3.18 0 0 1-.32 3.3 1.23a11.5 11.5 0 0 1 6 0c2.28-1.55 3.29-1.23 3.29-1.23.64 1.66.24 2.88.12 3.18a4.65 4.65 0 0 1 1.23 3.22c0 4.61-2.8 5.63-5.48 5.92.42.36.81 1.1.81 2.22l-.01 3.29c0 .31.2.69.82.57A12 12 0 0 0 12 .3"/></svg></a></li>
+      </ul>
+    </nav>
   </div>
 </header>
 
-<main class="wrap">
+<section class="hero" aria-label="Article introduction">
+  <div class="wrap">
+    <div class="kicker"><a href="/topics/#agentic-ai" style="color:inherit;text-decoration:none">Agentic AI</a> · Field guide</div>
+    <h1>The agent is the easy part. <em>The system around it is the job.</em></h1>
+    <p class="dek">An engineer's guide to taking LLM agents from a demo that impresses a room to software that thousands of strangers can rely on: routing, tool contracts, memory, durable orchestration, evals, security and the operating discipline that ties them together.</p>
+    <div class="byline"><span class="who">By Deepak Kumbhar</span> · November 24, 2026 · About 25 minutes to read · Builds on a talk by Aishwarya Srinivasan, with additional research from Anthropic, Sierra, OWASP, DeepMind, Temporal, OpenTelemetry and others</div>
+  </div>
+</section>
+
+<main class="wrap" id="main">
 
 <nav class="toc">
   <div class="t">Contents</div>
@@ -164,7 +182,7 @@ footer .home{display:block;margin-top:10px}
 <p>It gets worse once you care about <em>consistency</em> rather than average success. Sierra's τ-bench introduced a metric called <strong>pass^k</strong>: the probability that an agent completes the same task correctly on <em>all</em> k independent attempts. If the per-run success rate is <i>p</i>, pass^k is roughly <i>p</i><sup>k</sup>. An agent that succeeds 90% of the time has a pass^8 of about 43%. In the original τ-bench paper, the strongest model tested scored under 25% pass^8 on the retail domain. The metric is closer to what users experience, because a customer who asks for a refund needs it processed correctly <em>every time</em> they ask.</p>
 
 <div class="calc" id="calc">
-  <h4>Interactive · The compounding-error calculator</h4>
+  <h3>Interactive · The compounding-error calculator</h3>
   <p>Drag the sliders to see how per-step reliability, chain length and repeated trials combine. The curve shows end-to-end success as the number of steps grows.</p>
   <div class="row"><label for="p">Per-step reliability</label><input id="p" type="range" min="0.80" max="0.999" step="0.001" value="0.98"><span class="val" id="pv"></span></div>
   <div class="row"><label for="n">Steps in the chain</label><input id="n" type="range" min="1" max="50" step="1" value="20"><span class="val" id="nv"></span></div>
@@ -359,7 +377,7 @@ footer .home{display:block;margin-top:10px}
 
 <p>Routing only works if each step has a crisp output contract. Any output that feeds another system should be <strong>structured</strong>: a JSON Schema, a Pydantic model, a function call. Free-form prose that a downstream regex has to parse will eventually break that regex. For every model step, the design should answer three questions: <em>which model, what contract, and what happens when the output is invalid?</em></p>
 
-<pre><code><span class="k">from</span> pydantic <span class="k">import</span> BaseModel, Field
+<pre tabindex="0" aria-label="Code example 1"><code><span class="k">from</span> pydantic <span class="k">import</span> BaseModel, Field
 <span class="k">from</span> typing <span class="k">import</span> Literal
 
 <span class="k">class</span> <span class="n">BookingIntent</span>(BaseModel):
@@ -389,7 +407,7 @@ footer .home{display:block;margin-top:10px}
 
 <p>Every tool needs a precise name and description, typed input and output schemas, permission boundaries, timeout and retry behavior, and a structured error format. The most common mistake is the "do-what-I-mean" tool:</p>
 
-<pre><code><span class="c">// ✗ Too open-ended: the model can smuggle anything into "instruction"</span>
+<pre tabindex="0" aria-label="Code example 2"><code><span class="c">// ✗ Too open-ended: the model can smuggle anything into "instruction"</span>
 { <span class="s">"name"</span>: <span class="s">"update_user"</span>,
   <span class="s">"parameters"</span>: { <span class="s">"instruction"</span>: { <span class="s">"type"</span>: <span class="s">"string"</span> } } }
 
@@ -438,13 +456,13 @@ footer .home{display:block;margin-top:10px}
 
 <p>Two open protocols are standardizing how these pieces connect. The <strong>Model Context Protocol (MCP)</strong>, released by Anthropic in November 2024 and donated to the Linux Foundation's Agentic AI Foundation in December 2025, defines how an agent discovers and calls tools, resources and prompts. Google's <strong>Agent2Agent (A2A)</strong> protocol, launched in April 2025 and moved to the Linux Foundation that June, defines how independent agents discover each other (via "Agent Cards") and hand off tasks without exposing their internals.</p>
 
-<table>
-<tr><th>&nbsp;</th><th>MCP</th><th>A2A</th></tr>
-<tr><td><b>Connects</b></td><td>Agent → tools, data, prompts</td><td>Agent ↔ agent</td></tr>
-<tr><td><b>Unit of work</b></td><td>Tool call</td><td>Task with a lifecycle</td></tr>
-<tr><td><b>Discovery</b></td><td><code>tools/list</code>, <code>resources/list</code></td><td>Agent Card (JSON at a well-known URL)</td></tr>
-<tr><td><b>Other side is</b></td><td>A concrete capability surface</td><td>An opaque, autonomous peer</td></tr>
-<tr><td><b>Design question it raises</b></td><td>Which servers do you trust, and with what scopes?</td><td>How do you verify a remote agent and bound what you delegate?</td></tr>
+<table tabindex="0">
+<tr><td></td><th scope="col">MCP</th><th scope="col">A2A</th></tr>
+<tr><th scope="row">Connects</th><td>Agent → tools, data, prompts</td><td>Agent ↔ agent</td></tr>
+<tr><th scope="row">Unit of work</th><td>Tool call</td><td>Task with a lifecycle</td></tr>
+<tr><th scope="row">Discovery</th><td><code>tools/list</code>, <code>resources/list</code></td><td>Agent Card (JSON at a well-known URL)</td></tr>
+<tr><th scope="row">Other side is</th><td>A concrete capability surface</td><td>An opaque, autonomous peer</td></tr>
+<tr><th scope="row">Design question it raises</th><td>Which servers do you trust, and with what scopes?</td><td>How do you verify a remote agent and bound what you delegate?</td></tr>
 </table>
 
 <p>Protocols reduce integration work, but you still need contracts, least-privilege scopes, allow-lists of trusted servers, and logs. OWASP now maintains a separate Top 10 for the MCP layer alone.</p>
@@ -456,7 +474,7 @@ footer .home{display:block;margin-top:10px}
 
 <p><strong>State</strong> is the execution context of the current workflow: which step we're on, what's been collected, which tools ran and what they returned, whether the user confirmed, and whether we passed or failed. It's structured, small and transactional. <strong>Memory</strong> is broader: conversation history, preferences, past actions, retrieved knowledge, summaries. It's large, fuzzy and retrieved selectively. Mixing the two means critical workflow facts end up as sentences in a chat log that the model may or may not re-read correctly.</p>
 
-<table>
+<table tabindex="0">
 <tr><th>What</th><th>Access pattern</th><th>Typical home</th></tr>
 <tr><td>Workflow state</td><td>Key lookup, strongly consistent, every step</td><td>Redis, Postgres, DynamoDB, or the workflow engine's own history</td></tr>
 <tr><td>Application data</td><td>Source of truth, transactional</td><td>Your existing application database</td></tr>
@@ -579,7 +597,7 @@ footer .home{display:block;margin-top:10px}
 
 <p>Engines like Temporal checkpoint at the <em>activity</em> boundary, so a tool call that was in flight when a worker died will run again. If that tool charges a card, you've charged it twice. Every side-effecting tool therefore needs an idempotency key, derived from the workflow ID and step rather than generated fresh on each attempt, so the downstream system can deduplicate.</p>
 
-<pre><code><span class="k">def</span> <span class="n">execute_write</span>(run: Run, step: str, tool: Tool, args: dict):
+<pre tabindex="0" aria-label="Code example 3"><code><span class="k">def</span> <span class="n">execute_write</span>(run: Run, step: str, tool: Tool, args: dict):
     key = sha256(<span class="s">f"{run.workflow_id}:{step}"</span>)          <span class="c"># stable across retries</span>
     <span class="k">if</span> (prior := run.ledger.get(key)):                  <span class="c"># already done? return it</span>
         <span class="k">return</span> prior
@@ -719,7 +737,7 @@ footer .home{display:block;margin-top:10px}
 
 <p>The OWASP GenAI Security Project's <strong>Top 10 for Agentic Applications (2026)</strong>, published in December 2025 and built from real 2025 incidents, is the best current checklist for threat modeling:</p>
 
-<table>
+<table tabindex="0">
 <tr><th>ID</th><th>Risk</th><th>Primary design control</th></tr>
 <tr><td><span class="tag">ASI01</span></td><td>Agent goal hijack</td><td>Trust zones, dual-LLM/CaMeL patterns, plan pinning</td></tr>
 <tr><td><span class="tag">ASI02</span></td><td>Tool misuse &amp; exploitation</td><td>Narrow typed tools, argument validation, tiering</td></tr>
@@ -777,7 +795,7 @@ footer .home{display:block;margin-top:10px}
 
 <p>In production, run sampled asynchronous evals on live traces, route high-signal user feedback (thumbs-down, escalations, "that's wrong") straight into an eval queue, and turn every real failure into a permanent regression test. LLM-as-judge is useful but imperfect. Calibrate it against human labels, watch it for drift, and never let it be the only check on a high-stakes workflow.</p>
 
-<table>
+<table tabindex="0">
 <tr><th>Metric</th><th>What it catches</th></tr>
 <tr><td>Task completion rate &amp; pass^k</td><td>Overall success and its consistency</td></tr>
 <tr><td>Intent accuracy</td><td>Misrouting at the very first step</td></tr>
@@ -859,39 +877,39 @@ footer .home{display:block;margin-top:10px}
 
 <div class="check" id="checklist">
   <div class="progress"><div class="bar"><span id="barfill"></span></div><div class="ptext" id="ptext">0 of 0 confirmed</div></div>
-  <h4>Scope &amp; autonomy</h4>
+  <h3>Scope &amp; autonomy</h3>
   <label><input type="checkbox">Each feature sits at the lowest autonomy level that meets its eval targets (workflow before agent).</label>
   <label><input type="checkbox">Success criteria, acceptable error rate and target cost per task are written down.</label>
-  <h4>Models</h4>
+  <h3>Models</h3>
   <label><input type="checkbox">Every model step has a named model, a structured output schema and an invalid-output path.</label>
   <label><input type="checkbox">Routing sends easy steps to small models; the fallback model has its own eval results.</label>
   <label><input type="checkbox">Model versions are pinned and tagged on every trace.</label>
-  <h4>Tools</h4>
+  <h3>Tools</h3>
   <label><input type="checkbox">Tools are narrow and typed, with allow-listed fields, timeouts and structured errors.</label>
   <label><input type="checkbox">Tools are tiered by risk; irreversible actions require validation + explicit approval.</label>
   <label><input type="checkbox">Every side-effecting tool takes a stable idempotency key.</label>
   <label><input type="checkbox">Large catalogs use tool retrieval; MCP servers are allow-listed and version-pinned.</label>
-  <h4>State, memory &amp; context</h4>
+  <h3>State, memory &amp; context</h3>
   <label><input type="checkbox">Workflow state is stored separately from conversational memory, in a store that suits its access pattern.</label>
   <label><input type="checkbox">Each step receives the minimum context it needs; trusted and untrusted content are kept apart.</label>
   <label><input type="checkbox">Memory writes are policy-controlled, per-tenant, user-visible and deletable.</label>
-  <h4>Orchestration</h4>
+  <h3>Orchestration</h3>
   <label><input type="checkbox">Control flow is explicit; every failure has a named exit path.</label>
   <label><input type="checkbox">Runs checkpoint after each step and can resume after a crash or deploy.</label>
   <label><input type="checkbox">Hard budgets exist for steps, tool calls, tokens/dollars and time, plus a repeat-call detector.</label>
   <label><input type="checkbox">Partial failures have compensating actions or a human escalation with full context.</label>
-  <h4>Security &amp; privacy</h4>
+  <h3>Security &amp; privacy</h3>
   <label><input type="checkbox">No agent combines all three legs of the lethal trifecta without an explicit mitigation.</label>
   <label><input type="checkbox">Model output is never executed raw; generated code runs in a credential-free sandbox.</label>
   <label><input type="checkbox">The agent acts with delegated, user-scoped credentials; secrets never enter the prompt.</label>
   <label><input type="checkbox">Threat model reviewed against OWASP Agentic Top 10 (ASI01 to ASI10); per-user rate limits in place.</label>
   <label><input type="checkbox">PII is masked before prompts and logs; retention policies are set for traces and archives.</label>
-  <h4>Evals &amp; observability</h4>
+  <h3>Evals &amp; observability</h3>
   <label><input type="checkbox">The scenario suite covers happy, ambiguous, out-of-scope, tool-failure, adversarial and escalation cases.</label>
   <label><input type="checkbox">Evals grade the trace (and end-state), report pass^k, and gate every change.</label>
   <label><input type="checkbox">Traces use OpenTelemetry gen_ai.* conventions with prompt/model versions and cost.</label>
   <label><input type="checkbox">Production failures and negative feedback flow automatically into the eval set.</label>
-  <h4>Shipping</h4>
+  <h3>Shipping</h3>
   <label><input type="checkbox">Model + prompts + tools + retrieval config are released as one versioned bundle via canary with auto-rollback.</label>
   <label><input type="checkbox">Each action's autonomy level and the metric that would justify raising it are documented.</label>
 </div>
@@ -923,9 +941,17 @@ footer .home{display:block;margin-top:10px}
 <li>AI Incident Database, Incident 1152: Replit agent executes destructive commands during code freeze (Jul 2025). <a href="https://incidentdatabase.ai/cite/1152">incidentdatabase.ai/cite/1152</a></li>
 </ol>
 
+<!-- build:continue -->
+<section class="dk-continue" aria-labelledby="continue-h">
+  <h2 id="continue-h">Explore by topic</h2>
+  <p class="dk-topic-links"><a href="/topics/#agentic-ai">Agentic AI</a><a href="/topics/#ai-architecture">AI architecture</a><a href="/topics/#context-engineering">Context engineering</a><a href="/topics/#security-governance">Security and governance</a><a href="/topics/#evaluation-observability">Evaluation and observability</a></p>
+  <p>More articles are on the way. <a href="/feed.xml">Follow the RSS feed</a> or <a href="https://www.linkedin.com/in/deepakkumbhar">connect on LinkedIn</a> to hear when they are published.</p>
+</section>
+<!-- /build:continue -->
+
 </main>
 
-<footer><div class="wrap">Figures are original illustrations. Quantitative claims are attributed to their sources above. Benchmark results are specific to their test conditions and may not carry over to your workload, so measure on your own traffic. Compiled October 2026.<a class="home" href="/">More articles by Deepak Kumbhar</a></div></footer>
+<footer><div class="wrap">Figures are original illustrations. Quantitative claims are attributed to their sources above. Benchmark results are specific to their test conditions and may not carry over to your workload, so measure on your own traffic. Compiled October 2026.<a class="home" href="/writing/">More writing by Deepak Kumbhar</a></div></footer>
 
 <script>
 (function(){

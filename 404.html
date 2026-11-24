@@ -3,22 +3,34 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Page not found · Deepak Kumbhar</title>
+<title>Page not found | Deepak Kumbhar</title>
+<meta name="robots" content="noindex">
 <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
-<style>
-body{margin:0;min-height:100vh;display:flex;align-items:center;justify-content:center;background:#f7f4ee;color:#1d2327;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","Helvetica Neue",Arial,sans-serif;text-align:center;padding:24px}
-.code{font-family:ui-monospace,"SF Mono",Menlo,Consolas,monospace;color:#d9622b;letter-spacing:.14em;font-size:13px}
-h1{font-size:34px;margin:10px 0 12px;letter-spacing:-.02em}
-p{color:#4a545b;margin:0 0 22px}
-a{display:inline-block;background:#0f6e6e;color:#fff;text-decoration:none;padding:10px 18px;border-radius:8px;font-weight:600}
-</style>
+<link rel="stylesheet" href="/assets/site.css">
 </head>
-<body>
-<div>
-  <div class="code">404</div>
-  <h1>That page doesn't exist</h1>
-  <p>The link may be old, or the address may have a typo.</p>
-  <a href="/">Go to the home page</a>
-</div>
+<body class="dk">
+<a class="dk-skip" href="#main">Skip to content</a>
+<header class="dk-nav">
+  <div class="dk-nav-inner">
+    <a class="dk-brand" href="/">Deepak Kumbhar</a>
+    <nav aria-label="Main">
+      <ul>
+        <li><a href="/writing/">Writing</a></li>
+        <li><a href="/topics/">Topics</a></li>
+        <li><a href="/#about">About</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+<main id="main">
+  <div class="dk-wrap dk-404">
+    <h1>This page doesn't exist</h1>
+    <p class="dk-prose">The link may be out of date, or the address may have a typo. Everything published on the site is listed in the writing index.</p>
+    <div class="dk-actions">
+      <a class="dk-btn dk-btn-primary" href="/writing/">Browse all writing</a>
+      <a class="dk-btn dk-btn-quiet" href="/">Go to the home page</a>
+    </div>
+  </div>
+</main>
 </body>
 </html>

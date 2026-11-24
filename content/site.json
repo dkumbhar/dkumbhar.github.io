@@ -1,0 +1,63 @@
+{
+  "site": {
+    "url": "https://dkumbhar.github.io",
+    "name": "Deepak Kumbhar",
+    "tagline": "Practical perspectives on building AI-enabled enterprises.",
+    "author": "Deepak Kumbhar",
+    "linkedin": "https://www.linkedin.com/in/deepakkumbhar",
+    "github": "https://github.com/dkumbhar",
+    "words_per_minute": 225,
+    "latest_count": 6
+  },
+
+  "topics": [
+    {
+      "slug": "agentic-ai",
+      "name": "Agentic AI",
+      "description": "How agents plan, call tools and coordinate, and when a fixed workflow is the better choice."
+    },
+    {
+      "slug": "ai-architecture",
+      "name": "AI architecture",
+      "description": "The components around the model: routing, tool contracts, gateways, and cost and latency."
+    },
+    {
+      "slug": "context-engineering",
+      "name": "Context engineering",
+      "description": "Deciding what the model sees at each step: workflow state, memory, retrieval and trust zones."
+    },
+    {
+      "slug": "security-governance",
+      "name": "Security and governance",
+      "description": "Prompt injection, approval gates, least agency, and governing change once a system ships."
+    },
+    {
+      "slug": "evaluation-observability",
+      "name": "Evaluation and observability",
+      "description": "Grading whole traces, replaying runs, and the checks to complete before launch."
+    }
+  ],
+
+  "featured": [
+    "articles/agent-is-the-easy-part/"
+  ],
+
+  "articles": [
+    {
+      "path": "articles/agent-is-the-easy-part/",
+      "title": "The agent is the easy part: a field guide to agentic AI system design",
+      "category": "agentic-ai",
+      "format": "Field guide",
+      "note": "Includes eleven diagrams, an interactive reliability calculator and a 27-item design-review checklist.",
+      "linkedin": "https://www.linkedin.com/pulse/agent-easy-part-deepak-kumbhar-4m4pc/",
+      "topics": {
+        "agentic-ai": ["s1", "s2", "s7", "s8"],
+        "ai-architecture": ["s3", "s4", "s5", "s13"],
+        "context-engineering": ["s6"],
+        "security-governance": ["s9", "s10", "s14"],
+        "evaluation-observability": ["s11", "s12", "s15"]
+      },
+      "featured_sections": ["s2", "s6", "s10", "s11"]
+    }
+  ]
+}

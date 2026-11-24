@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+<channel>
+  <title>Deepak Kumbhar</title>
+  <link>https://dkumbhar.github.io/</link>
+  <atom:link href="https://dkumbhar.github.io/feed.xml" rel="self" type="application/rss+xml"/>
+  <description>Practical perspectives on building AI-enabled enterprises.</description>
+  <language>en-us</language>
+  <item>
+    <title>The agent is the easy part: a field guide to agentic AI system design</title>
+    <link>https://dkumbhar.github.io/articles/agent-is-the-easy-part/</link>
+    <guid isPermaLink="true">https://dkumbhar.github.io/articles/agent-is-the-easy-part/</guid>
+    <pubDate>Tue, 24 Nov 2026 12:00:00 +0000</pubDate>
+    <description>An engineer&#x27;s guide to taking LLM agents from demo to production: routing, tool contracts, memory, durable orchestration, approval gates, security, evals and observability.</description>
+  </item>
+</channel>
+</rss>
